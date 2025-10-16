@@ -17,5 +17,7 @@ fun main() {
 
     val numbers = numberpart.split(*separators.toTypedArray())
         .map {it.toInt()}
-    println("결과 $numbers")
+    val result = numbers.sum()
+
+    println("결과 $result")
 }
