@@ -9,15 +9,19 @@ fun main() {
     var numberpart = input
     var separator = ","
 
-    if(input.startsWith("//")) {
-        separator = input.substring(2,input.indexOf("\\n"))
-        separators.add(separator)
-        numberpart = input.substring(input.indexOf("\\n")+2)
+    try {
+        if (input.startsWith("//")) {
+            separator = input.substring(2, input.indexOf("\\n"))
+            separators.add(separator)
+            numberpart = input.substring(input.indexOf("\\n") + 1)
+        }
+
+        val numbers = numberpart.split(*separators.toTypedArray())
+            .map { it.toInt() }
+        val result = numbers.sum()
+
+        println("결과 $result")
+    } catch (e: Exception){
+        throw IllegalArgumentException()
     }
-
-    val numbers = numberpart.split(*separators.toTypedArray())
-        .map {it.toInt()}
-    val result = numbers.sum()
-
-    println("결과 $result")
 }
